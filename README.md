@@ -1,2 +1,2 @@
-# xxe.page
-XXE Testing Page
+# ssrf.page
+SSRF Testing Page
