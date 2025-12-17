@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-100;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-700 rounded;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-600;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-secondary-500 text-white;
+  }
+
+  /* Focus visible */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-secondary-400 rounded;
+  }
+}
+
+@layer components {
+  /* Code block styles */
+  .code-block {
+    @apply rounded-lg overflow-hidden shadow-xl;
+  }
+
+  /* Callout styles */
+  .callout {
+    @apply border-l-4 p-4 rounded-r-lg my-4;
+  }
+
+  .callout-info {
+    @apply border-blue-500 bg-blue-900 bg-opacity-20;
+  }
+
+  .callout-warning {
+    @apply border-yellow-500 bg-yellow-900 bg-opacity-20;
+  }
+
+  .callout-danger {
+    @apply border-red-500 bg-red-900 bg-opacity-20;
+  }
+
+  .callout-success {
+    @apply border-green-500 bg-green-900 bg-opacity-20;
+  }
+
+  .callout-tip {
+    @apply border-purple-500 bg-purple-900 bg-opacity-20;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

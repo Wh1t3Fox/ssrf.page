@@ -1,0 +1,60 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box { fill: #1e293b; stroke: #3b82f6; stroke-width: 2; }
+      .attacker { fill: #dc2626; stroke: #991b1b; }
+      .server { fill: #3b82f6; stroke: #1e40af; }
+      .internal { fill: #10b981; stroke: #059669; }
+      .text { fill: #f1f5f9; font-family: Arial, sans-serif; font-size: 14px; }
+      .arrow { stroke: #06b6d4; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .title { fill: #f1f5f9; font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#06b6d4" />
+    </marker>
+  </defs>
+
+  <text x="300" y="30" class="title" text-anchor="middle">SSRF Attack Flow</text>
+
+  <!-- Attacker -->
+  <rect x="50" y="60" width="120" height="60" class="attacker" rx="5"/>
+  <text x="110" y="95" class="text" text-anchor="middle">Attacker</text>
+
+  <!-- Vulnerable Server -->
+  <rect x="240" y="60" width="120" height="60" class="server" rx="5"/>
+  <text x="300" y="85" class="text" text-anchor="middle">Vulnerable</text>
+  <text x="300" y="105" class="text" text-anchor="middle">Server</text>
+
+  <!-- Internal Resource -->
+  <rect x="430" y="60" width="120" height="60" class="internal" rx="5"/>
+  <text x="490" y="85" class="text" text-anchor="middle">Internal</text>
+  <text x="490" y="105" class="text" text-anchor="middle">Service</text>
+
+  <!-- Step 1: Malicious Request -->
+  <path d="M 170 90 L 235 90" class="arrow"/>
+  <text x="200" y="80" class="text" text-anchor="middle" font-size="12">1. Malicious URL</text>
+
+  <!-- Step 2: SSRF Request -->
+  <path d="M 360 90 L 425 90" class="arrow"/>
+  <text x="390" y="80" class="text" text-anchor="middle" font-size="12">2. SSRF Request</text>
+
+  <!-- Step 3: Response -->
+  <path d="M 425 110 L 360 110" class="arrow"/>
+  <text x="390" y="135" class="text" text-anchor="middle" font-size="12">3. Response</text>
+
+  <!-- Step 4: Leaked Data -->
+  <path d="M 235 110 L 170 110" class="arrow"/>
+  <text x="200" y="135" class="text" text-anchor="middle" font-size="12">4. Leaked Data</text>
+
+  <!-- Example URLs -->
+  <rect x="50" y="180" width="500" height="180" class="box" rx="5"/>
+  <text x="300" y="205" class="text" text-anchor="middle" font-weight="bold">Example Attack</text>
+
+  <text x="70" y="235" class="text" font-size="12" fill="#06b6d4">POST /api/fetch HTTP/1.1</text>
+  <text x="70" y="255" class="text" font-size="12">{"url": "http://169.254.169.254/latest/meta-data/"}</text>
+
+  <text x="70" y="285" class="text" font-size="12" fill="#10b981">Server fetches internal metadata service</text>
+
+  <text x="70" y="315" class="text" font-size="12" fill="#dc2626">Response: AWS credentials exposed!</text>
+  <text x="70" y="340" class="text" font-size="12">{"AccessKeyId": "ASIA...", "SecretAccessKey": "..."}</text>
+</svg>
