@@ -1,5 +1,8 @@
 {
   "private": true,
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "next": "^16.0.10",
